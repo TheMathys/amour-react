@@ -126,17 +126,19 @@ const NavBar = () => {
 
             {!isOpen && (
             <NavItemsContainer>
-                <NavItem href="/">HELLO</NavItem>
-                <NavItem href="/about">About</NavItem>
-                <NavItem href="/contact">Contact</NavItem>
+                <NavItem href="/">HOME</NavItem>
+                  <NavItem href="/shop">SHOP</NavItem>
+                  <NavItem href="/game">GAME</NavItem>
+                  <NavItem href="/contact">CONTACT</NavItem>
             </NavItemsContainer>
             )}
 
             {isOpen && (
                 <Menu>
-                    <NavItem href="/">HELLO</NavItem>
-                    <NavItem href="/about">About</NavItem>
-                    <NavItem href="/contact">Contact</NavItem>
+                    <NavItem href="/">HOME</NavItem>
+                    <NavItem href="/shop">SHOP</NavItem>
+                    <NavItem href="/game">GAME</NavItem>
+                    <NavItem href="/contact">CONTACT</NavItem>
                 </Menu>
             )}
         </NavBarWrapper>
