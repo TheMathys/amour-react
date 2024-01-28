@@ -142,3 +142,8 @@ dist
 /.idea/dictionaries
 /.idea/vcs.xml
 /.idea/jsLibraryMappings.xml
+
+# delete ds_store
+.DS_Store
+*/.DS_Store
+*/**/.DS_Store
