@@ -1,18 +1,13 @@
-
+import Navbar from "../components/Navbar";
 
 
 const Shop = () => {
     
     return (
-<html>
-<head>
-    <title>Page par défaut de shop</title>
-</head>
-<body>
-    <h1>Bienvenue sur la page de shop!</h1>
-    <p>Ceci est une page par défaut.</p>
-</body>
-</html>
+        <div>
+            <Navbar />
+            <h1>abcd</h1>
+        </div>
     );
 }
 
