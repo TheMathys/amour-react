@@ -29,7 +29,7 @@ const Gif = () => {
         src={currentGif}
         alt="Description du GIF"
         style={{ 
-          width: px2vw(300),
+          width: px2vw(280),
       }}/>
     </div>
   );

@@ -113,10 +113,9 @@ import {Link} from "react-router-dom";
 const NavBarWrapper = styled.nav`
     background-color: black;
     display: flex;
-    position: fixed;
     top: 0;
     left: 0;
-    width: 100%;
+    width: 100vw;
     justify-content: space-between;
 `;
 

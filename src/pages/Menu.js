@@ -1,7 +1,8 @@
-import Gif  from "../components/gif.js";
+import Gif  from "../components/Gif.js";
 import styled from "styled-components";
 import px2vw from "../utils/px2vw.js";
 import { Link } from 'react-router-dom';
+import Balloon from "../components/Balloon.js";
 
 export const StyledHome = styled.div`
 height: 100vh;
@@ -59,6 +60,7 @@ align-items: center;
 
 export const StyledBalloons = styled.img`
 display : flex;
+position: relative;
 @media screen and (max-width: 1080px)
 {
   width: ${px2vw(300)} ;
@@ -68,11 +70,8 @@ display : flex;
   width: ${px2vw(400)} ;
 }
 width: ${px2vw(200)};
-padding: ${px2vw(30)};
+;
 `;
-
-export const StyledLapin = styled.img`
-width: ${px2vw(300)};`; 
 
 export const StyleFooter = styled.div`
 display: flex;
@@ -126,15 +125,13 @@ const Home = () => {
       <StyledBody>
         <EmptyDiv></EmptyDiv>
         <StyledBalloonContainer>
-          <Link to="/home"><StyledBalloons src={"./assets/balloons/HOMEballoon.png"} /></Link>
-          <Link to="/shop"><StyledBalloons src={"./assets/balloons/SHOPballoon.png"} /></Link>
+          <Link to="/home"><Balloon sprite="HOMEballoon"/></Link>
+          <Link to="/shop"><Balloon sprite="SHOPballoon"/></Link>      
         </StyledBalloonContainer>
-
-      <Gif/>
-
+        <Gif/>
         <StyledBalloonContainer>
-          <Link to="/game"><StyledBalloons src={"./assets/balloons/GAMEballoon.png"} /></Link>
-          <Link to="/contact"><StyledBalloons src={"./assets/balloons/CONTACTballoon.png"} /></Link>
+          <Link to="/contact"><Balloon sprite="CONTACTballoon"/></Link>
+          <Link to="/game"><Balloon sprite="GAMEballoon"/></Link>
         </StyledBalloonContainer>
         <EmptyDiv></EmptyDiv>
       </StyledBody>
