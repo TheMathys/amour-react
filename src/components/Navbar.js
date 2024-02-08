@@ -172,6 +172,10 @@ const Menu = styled.div`
 z-index: 1;
     align-items: center;
     transition: 0.3s;
+    
+    @media(min-width: 800px) {
+        display: none;
+    }
 `;
 
 const NavBar = () => {
