@@ -2,6 +2,8 @@
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import {Link} from "react-router-dom";
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faBars, faClose} from "@fortawesome/free-solid-svg-icons";
 
 // Styles
 // const NavBarWrapper = styled.nav`
@@ -117,32 +119,90 @@ const NavBarWrapper = styled.nav`
     left: 0;
     width: 100vw;
     justify-content: space-between;
+    
+    @media (max-width: 1000px) {
+        height: 80px;
+    }
 `;
 
 const LapinLogo = styled.img`
     height: 100px;
     margin: 20px;
+    
+    @media (max-width: 1000px) {
+        height: 80px;
+    }
 `;
 
 const NavBarItem = styled.img`
     height: 100px;
     margin: 20px 0px;
+    
+    @media (max-width: 1000px) {
+        height: 80px;
+    }
+`;
+
+const NavBarMobile = styled.div`
+    display: none;
+    
+    @media (max-width: 800px) {
+        display: flex;
+    }
+`;
+
+const NavBarComputer = styled.div
+`
+    display: flex;
+    
+    @media (max-width: 800px) {
+        display: none;
+    }
+`;
+
+const Menu = styled.div`
+    flex-direction: column;
+    display: flex;
+    position: absolute;
+    top: 0px;
+    left: 0;
+    width: 100%;
+    background-color: black;
+    padding: 10px;
+z-index: 1;
+    align-items: center;
+    transition: 0.3s;
 `;
 
 const NavBar = () => {
+    const [isOpen, setIsOpen] = useState(false);
 
     return (
-        <NavBarWrapper>
-            <div>
+        <>
+            <NavBarWrapper>
+                <NavBarMobile>
+                    <FontAwesomeIcon icon={faBars} size="2x" color="white" style={{"top": "50%", "position": "relative", "marginLeft": "20px", "cursor": "pointer"}} onClick={() => setIsOpen(true)} />
+                    <NavBarItem src="/assets/typo/ISTILL.png" alt="Logo"/>
+                </NavBarMobile>
+                <NavBarComputer>
+                    <NavBarItem src="/assets/typo/ISTILL.png" alt="Logo"/>
+                    <Link to={"/"}><NavBarItem src="/assets/typo/HOME.png" /></Link>
+                    <Link to={"/shop"}><NavBarItem src="/assets/typo/SHOP.png" /></Link>
+                    <Link to={"/contact"}><NavBarItem src="/assets/typo/CONTACT.png" /></Link>
+                </NavBarComputer>
+                <div>
+                    <LapinLogo src="/assets/lapin/lapin.png" alt="Lapin" />
+                </div>
+            </NavBarWrapper>
+            {isOpen ?
+            <Menu>
                 <NavBarItem src="/assets/typo/ISTILL.png" alt="Logo"/>
                 <Link to={"/"}><NavBarItem src="/assets/typo/HOME.png" /></Link>
                 <Link to={"/shop"}><NavBarItem src="/assets/typo/SHOP.png" /></Link>
                 <Link to={"/contact"}><NavBarItem src="/assets/typo/CONTACT.png" /></Link>
-            </div>
-            <div>
-                <LapinLogo src="/assets/lapin/lapin.png" alt="Lapin" />
-            </div>
-        </NavBarWrapper>
+                <FontAwesomeIcon icon={faClose} size="2x" color="white" style={{"top": "50%", "position": "relative", "marginLeft": "20px", "cursor": "pointer"}} onClick={() => setIsOpen(false)} />
+            </Menu> : null}
+        </>
     );
 };
 
