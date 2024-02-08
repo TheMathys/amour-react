@@ -6,7 +6,7 @@ const Shop = () => {
     return (
         <div>
             <Navbar />
-            <h1>abcd</h1>
+            <p>shop</p>
         </div>
     );
 }

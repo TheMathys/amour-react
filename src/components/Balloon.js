@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import px2vw from "../utils/px2vw.js";
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const StyledBalloons = styled.img`
 display : flex;
@@ -17,17 +18,24 @@ width: ${px2vw(200)};
 padding: ${px2vw(30)};
 `;
 
-const Balloon = ({ sprite }) => {
-    const [image, setImage] = useState(`./assets/balloons/${sprite}.png`);
+const Balloon = ({ sprite, route }) => {
+  const [image, setImage] = useState(`./assets/balloons/${sprite}.png`);
+  const navigate = useNavigate();
 
-    return (
-        <StyledBalloons 
-            src={image} 
-            onMouseEnter={() => setImage(`./assets/balloons/animation/${sprite}.gif`)} 
-            onMouseLeave={() => setImage(`./assets/balloons/${sprite}.png`)}
-        >
-        </StyledBalloons>
-    );
-}
+  const handleClick = () => {
+      setImage(`./assets/balloons/animation/${sprite}.gif`);
+      setTimeout(() => {
+          navigate(`/${route}`); // Remplacez '/nouvelle-route' par la route vers laquelle vous voulez rediriger
+      }, 800);
+  };
+
+  return (
+    <StyledBalloons 
+        src={image} 
+        onClick={handleClick}
+        onMouseLeave={() => setImage(`./assets/balloons/${sprite}.png`)}
+    />
+);
+  };
 
 export default Balloon;
