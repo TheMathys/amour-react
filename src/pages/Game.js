@@ -36,11 +36,10 @@ function Game() {
   `;
 
   const StyledSvg = styled.img`
-    width: 30px;
+    width: 40px;
     justify-content: center;
     align-items: center;
   `;
-
 
   useEffect(
       function () {
@@ -57,38 +56,44 @@ function Game() {
         // device pixel ratio of the Unity Application when the device pixel
         // ratio changes.
         mediaMatcher.addEventListener("change", updateDevicePixelRatio);
+
+        // Returning a function which will remove the event listener when the
+        // component unmounts.
         return function () {
           // Removing the event listener when the component unmounts.
           mediaMatcher.removeEventListener("change", updateDevicePixelRatio);
         };
+
       },
       [devicePixelRatio]
     );
 
+  
       return (
+
         <>
-        <div style={{ display: "flex-column", alignItems: "center" }}>
-          <Navbar />
-          <div style={{ display: "flex", justifyContent: "center", alignItems: "center" }}>
-            {isLoaded === false && (
-              <div style={{ position: "absolute", fontSize: px2vw(30) }}>
-              <p>Loading... ({loadingPercentage}%)</p>
-              </div>
-              )}
-              <Unity 
-                unityProvider={unityProvider} 
-                style={{ 
-                  display: "flex",
-                  width: px2vw(1000),  
-                  borderRadius: "12px",
-                }} 
-                devicePixelRatio={devicePixelRatio}
-              />
-          </div>
-          <div style={{ display: "flex", justifyContent: "flex-end", alignItems:"flex-end", paddingRight: px2vw(220)}}>
-          <FullscreenButton onClick={handleEnterFullscreen}><StyledSvg src="./assets/typo/FULLSCREEN.svg"></StyledSvg></FullscreenButton>
-          </div> 
-        </div>
+            <div style={{ display: "flex-column", alignItems: "center" }}>
+              <Navbar />
+              <div style={{ display: "flex", justifyContent: "center"}}>
+              {isLoaded === false && (
+                <div style={{ paddingTop: px2vw(200) ,position : "absolute", fontSize: px2vw(30), alignContent : "center" }}>
+                <p>Loading... ({loadingPercentage}%)</p>
+                </div>
+                )}
+                <Unity 
+                  unityProvider={unityProvider} 
+                  style={{ 
+                    display: "flex",
+                    width: px2vw(950),  
+                    borderRadius: "12px",
+                  }} 
+                  devicePixelRatio={devicePixelRatio}
+                />
+                </div>
+                <div style={{ display: "flex", justifyContent: "flex-end", alignItems:"flex-end", paddingRight: px2vw(245)}}>
+                  <FullscreenButton onClick={handleEnterFullscreen}><StyledSvg src="./assets/typo/FULLSCREEN.svg"></StyledSvg></FullscreenButton>
+                </div> 
+            </div>        
       </>
       );
 }

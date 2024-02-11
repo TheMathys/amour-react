@@ -18,23 +18,24 @@ justify-content: center;
 
 export const StyledLogo = styled.img`
 display: flex;
-width: ${px2vw(500)};
-padding-top : ${px2vw(20)};
-@media screen and (max-width: 1080px)
+width: ${px2vw(600)};
+padding-top : ${px2vw(10)};
+@media screen and (max-width: 900px)
 {
-  width: ${px2vw(800)};
-  padding-top : ${px2vw(25)};
+  width: ${px2vw(1200)};
+  padding-top : ${px2vw(10)};
 }
 @media screen and (max-width: 600px)
 {
   width: ${px2vw(1200)};
-  padding-left: ${px2vw(30)};
+  padding-top : ${px2vw(10)};
 }
 @media screen and (max-width: 300px)
 {
-  width: ${px2vw(1200)};
-  padding-left: ${px2vw(70)};
+  width: ${px2vw(1400)};
+  padding-top : ${px2vw(10)};
 }
+
 `;
 
 export const StyledBody = styled.div`
@@ -50,7 +51,7 @@ justify-content: space-between;
 export const StyledBalloonContainer = styled.div`
 display: flex;
 flex-direction: row;
-@media screen and (max-width: 1080px)
+@media screen and (max-width: 900px)
 {
   flex-direction: column;
 }
@@ -58,23 +59,13 @@ flex-direction: row;
 {
   flex-direction: row;
 }
+@media screen and (max-width: 300px)
+{
+  flex-direction: column;
+  justify-items: space-between;
+}
 justify-content: space-around;
 align-items: center;
-`;
-
-export const StyledBalloons = styled.img`
-display : flex;
-position: relative;
-@media screen and (max-width: 1080px)
-{
-  width: ${px2vw(300)} ;
-}
-@media screen and (max-width: 600px)
-{
-  width: ${px2vw(400)} ;
-}
-width: ${px2vw(200)};
-;
 `;
 
 export const StyleFooter = styled.div`
@@ -85,31 +76,41 @@ font-size: ${px2vw(30)};
 color: white;
 font-family: Pixel, sans-serif;
 padding: ${px2vw(10)};
-@media screen and (max-width: 1080px)
+@media screen and (max-width: 900px)
 {
-  font-size: ${px2vw(40)} ;
-  padding: ${px2vw(30)};
+  font-size: ${px2vw(60)};
 }
 @media screen and (max-width: 600px)
 {
-  font-size: ${px2vw(60)} ;
-  padding: ${px2vw(40)};
+  font-size: ${px2vw(80)};
+}
+@media screen and (max-width: 300px)
+{
+  font-size: ${px2vw(100)};
 }
 `;
 
 export const StyleFooterImage = styled.img`
 height: ${px2vw(30)};
 padding-left: ${px2vw(15)};
-@media screen and (max-width: 1080px)
+
+@media screen and (max-width: 900px)
 {
-  height: ${px2vw(40)};
+  height: ${px2vw(50)};
   padding-left: ${px2vw(20)};
 
 }
 @media screen and (max-width: 600px)
 {
   height: ${px2vw(60)};
-  padding-left: ${px2vw(20)};
+  padding-left: ${px2vw(25)};
+
+}
+@media screen and (max-width: 300px)
+{
+  height: ${px2vw(80)};
+  padding-left: ${px2vw(45)};
+
 }
 `;
 
@@ -134,8 +135,8 @@ const Home = () => {
         </StyledBalloonContainer>
         <Gif/>
         <StyledBalloonContainer>
-          <Balloon sprite="CONTACTballoon" route={"contact"}/>
           <Balloon sprite="GAMEballoon" route={"game"}/>
+          <Balloon sprite="CONTACTballoon" route={"contact"}/>
         </StyledBalloonContainer>
         <EmptyDiv></EmptyDiv>
       </StyledBody>

@@ -13,15 +13,12 @@ const fadeIn = keyframes`
 const NavBarWrapper = styled.nav`
     background-color: black;
     display: flex;
+    z-index: 1;
     top: 0;
     left: 0;
     width: 100vw;
-    margin-bottom: 50px;
+    margin-bottom: 20px;
     justify-content: space-between;
-    
-    @media (max-width: 1000px) {
-        height: 80px;
-    }
 
 `;
 
@@ -37,8 +34,6 @@ const LapinLogo = styled.img`
 const NavBarItem = styled.img`
     height: 80px;
     margin: 20px 0px;
-    
-
 `;
 
 
@@ -104,7 +99,6 @@ const NavBarMobile = styled.div`
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        margin-Top: 30px;
     }
 `;
 
@@ -112,7 +106,7 @@ const NavBarComputer = styled.div
 `
     display: flex;
     
-    @media (max-width: 800px) {
+    @media (max-width: 800px ) {
         display: none;
     }
 `;

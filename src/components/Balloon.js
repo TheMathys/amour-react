@@ -5,18 +5,27 @@ import { useNavigate } from 'react-router-dom';
 
 export const StyledBalloons = styled.img`
 display : flex;
+height: ${px2vw(160)};
+padding: ${px2vw(5)};
 
-@media screen and (max-width: 1080px)
+@media screen and (max-width: 900px)
 {
-  width: ${px2vw(300)} ;
+  height: ${px2vw(250)};
+  padding: ${px2vw(35)};
 }
 @media screen and (max-width: 600px)
 {
-  width: ${px2vw(400)} ;
+  height: ${px2vw(310)};
+  padding-top: ${px2vw(60)};
+  padding-top: ${px2vw(60)};
 }
-width: ${px2vw(200)};
-padding: ${px2vw(30)};
+@media screen and (max-width: 300px)
+{
+  height: ${px2vw(450)};
+  padding: ${px2vw(50)};
+}
 `;
+
 
 const Balloon = ({ sprite, route }) => {
   const [image, setImage] = useState(`./assets/balloons/${sprite}.png`);
