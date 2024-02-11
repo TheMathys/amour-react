@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import {StyledHeader, StyledLogo, StyledFooter, StyleFooterImage} from "./Menu";
+import {StyledHeader, StyledLogo, StyledFooter, StyledFooterImage} from "./Menu";
 import px2vw from "../utils/px2vw";
 import Gif from "../components/Gif";
 
@@ -37,7 +37,7 @@ const Countdown = (props) => {
             <Gif width={100}/>
             <StyledSpan>welcome in our shop, we'll be open in : <br /> {props.days}days, {props.hours}hours, {props.minutes}min, {props.seconds}sec</StyledSpan>
         </StyledBody>
-        <StyledFooter>powered by <StyleFooterImage src={"./assets/typo/amour.png"} /></StyledFooter>
+        <StyledFooter>powered by <StyledFooterImage src={"./assets/typo/amour.png"} /></StyledFooter>
     </StyledWrapper>
   );
 }

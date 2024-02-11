@@ -68,7 +68,7 @@ justify-content: space-around;
 align-items: center;
 `;
 
-export const StyleFooter = styled.div`
+export const StyledFooter = styled.div`
 display: flex;
 justify-content: center;
 text-align: center;
@@ -90,7 +90,7 @@ padding: ${px2vw(10)};
 }
 `;
 
-export const StyleFooterImage = styled.img`
+export const StyledFooterImage = styled.img`
 height: ${px2vw(30)};
 padding-left: ${px2vw(15)};
 
@@ -98,19 +98,16 @@ padding-left: ${px2vw(15)};
 {
   height: ${px2vw(50)};
   padding-left: ${px2vw(20)};
-
 }
 @media screen and (max-width: 600px)
 {
   height: ${px2vw(60)};
   padding-left: ${px2vw(25)};
-
 }
 @media screen and (max-width: 300px)
 {
   height: ${px2vw(80)};
   padding-left: ${px2vw(45)};
-
 }
 `;
 
@@ -141,7 +138,7 @@ const Home = () => {
         <EmptyDiv></EmptyDiv>
       </StyledBody>
 
-      <StyledFooter>powered by <StyleFooterImage src={"./assets/typo/amour.png"} /></StyledFooter>
+      <StyledFooter>powered by <StyledFooterImage src={"./assets/typo/amour.png"} /></StyledFooter>
 
     </StyledHome>
   )
