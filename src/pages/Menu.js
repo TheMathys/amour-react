@@ -141,7 +141,7 @@ const Home = () => {
         <EmptyDiv></EmptyDiv>
       </StyledBody>
 
-      <StyleFooter>powered by <StyleFooterImage src={"./assets/typo/amour.png"} /></StyleFooter>
+      <StyledFooter>powered by <StyleFooterImage src={"./assets/typo/amour.png"} /></StyledFooter>
 
     </StyledHome>
   )

@@ -28,6 +28,7 @@ function Game() {
     font-weight: bold;
     transition: 0.7s;
     border-radius: 12px;
+      cursor: pointer;
     &:hover {
       background-color: black;
       color: white;

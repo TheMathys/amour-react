@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import px2vw from "../utils/px2vw.js";
 import styled from "styled-components";
 
-const Gif = () => {
+const Gif = (props) => {
   const [currentGif, setCurrentGif] = useState('./assets/lapin/lapin-entry.gif');
 
   const changeGif = () => {
