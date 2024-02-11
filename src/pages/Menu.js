@@ -77,7 +77,7 @@ width: ${px2vw(200)};
 ;
 `;
 
-export const StyleFooter = styled.div`
+export const StyledFooter = styled.div`
 display: flex;
 justify-content: center;
 text-align: center;
@@ -140,7 +140,7 @@ const Home = () => {
         <EmptyDiv></EmptyDiv>
       </StyledBody>
 
-      <StyleFooter>powered by <StyleFooterImage src={"./assets/typo/amour.png"} /></StyleFooter>
+      <StyledFooter>powered by <StyleFooterImage src={"./assets/typo/amour.png"} /></StyledFooter>
 
     </StyledHome>
   )

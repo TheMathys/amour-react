@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import px2vw from "../utils/px2vw.js";
 
-const Gif = () => {
+const Gif = (props) => {
   const [currentGif, setCurrentGif] = useState('./assets/lapin/lapin-entry.gif');
 
   const changeGif = () => {
@@ -29,7 +29,7 @@ const Gif = () => {
         src={currentGif}
         alt="Description du GIF"
         style={{ 
-          width: px2vw(280),
+          width: px2vw(props?.width || 280),
       }}/>
     </div>
   );

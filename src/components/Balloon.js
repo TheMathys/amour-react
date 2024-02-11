@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 export const StyledBalloons = styled.img`
 display : flex;
-
+cursor: pointer;
 @media screen and (max-width: 1080px)
 {
   width: ${px2vw(300)} ;
