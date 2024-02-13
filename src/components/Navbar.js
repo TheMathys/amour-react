@@ -16,7 +16,7 @@ const NavBarWrapper = styled.nav`
     z-index: 1;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     margin-bottom: 20px;
     justify-content: space-between;
 
