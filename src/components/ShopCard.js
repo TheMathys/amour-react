@@ -2,7 +2,6 @@ import styled from "styled-components";
 import {useState} from "react";
 
 const StyledCard = styled.div`
-  border: 1px solid black;
   padding: 20px;
   margin: 20px;
   text-align: center;

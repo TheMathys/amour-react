@@ -1,4 +1,5 @@
 import Navbar from "../components/Navbar";
+import PaperBorder from "../components/PaperBorder";
 
 
 const Home = () => {
@@ -6,7 +7,7 @@ const Home = () => {
     return (
         <div>
             <Navbar />
-            <p>home</p>
+            <PaperBorder indice={1} />
         </div>
     );
 }

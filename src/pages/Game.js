@@ -1,102 +1,142 @@
-import React, { useState, useEffect  } from "react";
+import React, { useState, useEffect } from "react";
 import { Unity, useUnityContext } from "react-unity-webgl";
 import Navbar from "../components/Navbar.js";
 import px2vw from "../utils/px2vw.js";
 import styled from 'styled-components';
+import PaperBorder from "../components/PaperBorder.js";
 
 function Game() {
 
-    const { unityProvider, isLoaded, loadingProgression, requestFullscreen } = useUnityContext({
-        loaderUrl: "JEU/Build/JEU.loader.js",
-        dataUrl: "JEU/Build/JEU.data",
-        frameworkUrl: "JEU/Build/JEU.framework.js",
-        codeUrl: "JEU/Build/JEU.wasm",
-    });
-  
+  const { unityProvider, isLoaded, requestFullscreen } = useUnityContext({
+    loaderUrl: "JEU/Build/JEU.loader.js",
+    dataUrl: "JEU/Build/JEU.data",
+    frameworkUrl: "JEU/Build/JEU.framework.js",
+    codeUrl: "JEU/Build/JEU.wasm",
+  });
+
   function handleEnterFullscreen() {
-        requestFullscreen(true);
-      }
+    requestFullscreen(true);
+  }
 
-  const loadingPercentage = Math.round(loadingProgression * 100);
 
-  const [devicePixelRatio, setDevicePixelRatio] = useState(window.devicePixelRatio);
+  const [devicePixelRatio] = useState(window.devicePixelRatio);
+  const [windowWidth, setWindowWidth] = useState(window.innerWidth);
 
   const FullscreenButton = styled.button`
-    background-color: red;
-    border: 1px solid red;
+    background-color: rgba(255, 0, 0, 0.89);
+    border: 4px white ridge;
+    color: white;
     margin-top: 10px;
-    font-weight: bold;
     transition: 0.7s;
     border-radius: 12px;
-      cursor: pointer;
+    cursor: pointer;
     &:hover {
       background-color: black;
       color: white;
-      border: 1px solid red;
+      border: 8px white ridge;
+    }
+
+    @media (max-width: 1000px) {
+      font-family: Pixel;
+      font-weight: italic;
+      font-size: 50px;
+      border: 8px white ridge;
+      &:hover {
+        border: 12px white ridge;
+      }
+      padding : 15px
     }
   `;
 
+  const FullscreenDiv = styled.div`
+    display: flex; 
+    justify-content: center;
+    alignItems: center;
+    padding-top: 10px;
+    @media (max-width: 1000px) {
+      display: none;
+    } 
+  `;
+
+  const StyledWarning = styled.div`
+    display: flex;
+    justify-content: center;
+    @media (max-width: 1000px) {
+      display: none;
+    } 
+  `;
+
+  const WarningMessage = styled.p`
+
+  `;
+
+  const StyledLoading = styled.div`
+    display: flex;
+    width: 100vw;
+    height: 60vh;
+    justify-content: center;
+    align-items: center;
+    @media (max-width: 1000px) {
+      display: none;
+    }
+  `;
   const StyledSvg = styled.img`
     width: 40px;
     justify-content: center;
     align-items: center;
   `;
 
-  useEffect(
-      function () {
-        // A function which will update the device pixel ratio of the Unity
-        // Application to match the device pixel ratio of the browser.
-        const updateDevicePixelRatio = function () {
-          setDevicePixelRatio(window.devicePixelRatio);
-        };
-        // A media matcher which watches for changes in the device pixel ratio.
-        const mediaMatcher = window.matchMedia(
-          `screen and (resolution: ${devicePixelRatio}dppx)`
-        );
-        // Adding an event listener to the media matcher which will update the
-        // device pixel ratio of the Unity Application when the device pixel
-        // ratio changes.
-        mediaMatcher.addEventListener("change", updateDevicePixelRatio);
+  useEffect(() => {
+    const updateWindowDimensions = () => {
+      setWindowWidth(window.innerWidth);
+    };
 
-        // Returning a function which will remove the event listener when the
-        // component unmounts.
-        return function () {
-          // Removing the event listener when the component unmounts.
-          mediaMatcher.removeEventListener("change", updateDevicePixelRatio);
-        };
+    window.addEventListener("resize", updateWindowDimensions);
 
-      },
-      [devicePixelRatio]
-    );
+    return () => {
+      window.removeEventListener("resize", updateWindowDimensions);
+    };
+  }, []);
 
-  
-      return (
+  const gameDisplayStyle = windowWidth >= 1000 ? "flex" : "none";
+  const gameZIndex = windowWidth >= 1000 ? "0" : "-10";
 
-        <>
-            <div style={{ display: "flex-column", alignItems: "center" }}>
-              <Navbar />
-              <div style={{ display: "flex", justifyContent: "center"}}>
-              {isLoaded === false && (
-                <div style={{ paddingTop: px2vw(200) ,position : "absolute", fontSize: px2vw(30), alignContent : "center" }}>
-                <p>Loading... ({loadingPercentage}%)</p>
-                </div>
-                )}
-                <Unity 
-                  unityProvider={unityProvider} 
-                  style={{ 
-                    display: "flex",
-                    width: px2vw(950),  
-                    borderRadius: "12px",
-                  }} 
-                  devicePixelRatio={devicePixelRatio}
-                />
-                </div>
-                <div style={{ display: "flex", justifyContent: "flex-end", alignItems:"flex-end", paddingRight: px2vw(245)}}>
-                  <FullscreenButton onClick={handleEnterFullscreen}><StyledSvg src="./assets/typo/FULLSCREEN.svg"></StyledSvg></FullscreenButton>
-                </div> 
-            </div>        
-      </>
-      );
+  return (
+    <>
+      <PaperBorder indice={1} />
+      <Navbar />
+        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+          <div style={{ position: "relative" }}>
+            <StyledWarning>
+              <WarningMessage>*if not working, refresh the page </WarningMessage>
+            </StyledWarning>
+            {isLoaded === false && (
+              <StyledLoading>
+                <img src="./assets/typo/LOADING.gif" alt="loading" />
+              </StyledLoading>
+            )}
+            <Unity
+              unityProvider={unityProvider}
+              style={{
+                display: gameDisplayStyle,
+                width: px2vw(900),
+                borderRadius: "12px",
+                zIndex: gameZIndex,
+              }}
+              devicePixelRatio={devicePixelRatio}
+            />
+            <FullscreenDiv>
+              <FullscreenButton onClick={handleEnterFullscreen} ><StyledSvg src="./assets/typo/FULLSCREEN.svg"></StyledSvg></FullscreenButton>
+            </FullscreenDiv>
+          </div>
+          {windowWidth < 1000 && (
+            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "80vh" }}>
+              <FullscreenButton onClick={handleEnterFullscreen}>Press to Play</FullscreenButton>
+            </div>
+          )}
+        </div>
+    </>
+  );
 }
 
 export default Game;

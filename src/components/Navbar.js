@@ -13,7 +13,7 @@ const fadeIn = keyframes`
 const NavBarWrapper = styled.nav`
     background-color: black;
     display: flex;
-    z-index: 1;
+    z-index: 7;
     top: 0;
     left: 0;
     width: 100%;
