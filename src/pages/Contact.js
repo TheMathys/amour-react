@@ -1,6 +1,7 @@
 import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import px2vw from "../utils/px2vw.js";
+import { Helmet } from 'react-helmet';
 
 const StyledContactPage = styled.div`
     display: flex;
@@ -173,6 +174,10 @@ const Contact = () => {
     
     return (
         <StyledContactPage>
+            <Helmet>
+                <title>CONTACT</title>
+                <link rel="icon" href="./assets/icon.png" />
+            </Helmet>
             <Navbar />
                 <StyledBackground src="./assets/typo/3COUPE.png" alt="background" />
                 <div style={{"z-index": "1"}}>

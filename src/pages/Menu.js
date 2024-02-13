@@ -2,6 +2,7 @@ import Gif  from "../components/Gif.js";
 import styled from "styled-components";
 import px2vw from "../utils/px2vw.js";
 import Balloon from "../components/Balloon.js";
+import { Helmet } from 'react-helmet';
 
 export const StyledHome = styled.div`
 height: 100vh;
@@ -121,6 +122,11 @@ const Home = () => {
     
   return (
     <StyledHome>
+
+        <Helmet>
+          <title>I LOVE MY EX</title>
+          <link rel="icon" href="./assets/icon.png" />
+        </Helmet>
 
       <StyledHeader><StyledLogo src={"./assets/typo/ISTILL.png"} /></StyledHeader>
 

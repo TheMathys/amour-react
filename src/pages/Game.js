@@ -4,6 +4,7 @@ import Navbar from "../components/Navbar.js";
 import px2vw from "../utils/px2vw.js";
 import styled from 'styled-components';
 import PaperBorder from "../components/PaperBorder.js";
+import { Helmet } from 'react-helmet';
 
 function Game() {
 
@@ -104,6 +105,10 @@ function Game() {
   return (
     <>
       <PaperBorder indice={1} />
+      <Helmet>
+          <title>GAME</title>
+          <link rel="icon" href="./assets/icon.png" />
+      </Helmet>
       <Navbar />
         <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
           <div style={{ position: "relative" }}>
