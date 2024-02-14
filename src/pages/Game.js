@@ -5,23 +5,32 @@ import px2vw from "../utils/px2vw.js";
 import styled from 'styled-components';
 import PaperBorder from "../components/PaperBorder.js";
 import { Helmet } from 'react-helmet';
+import Gif from "../components/Gif.js";
 
 function Game() {
 
   const { unityProvider, isLoaded, requestFullscreen } = useUnityContext({
-    loaderUrl: "JEU/Build/JEU.loader.js",
-    dataUrl: "JEU/Build/JEU.data",
-    frameworkUrl: "JEU/Build/JEU.framework.js",
-    codeUrl: "JEU/Build/JEU.wasm",
+    loaderUrl: "./JEU/Build/JEU.loader.js",
+    dataUrl: "./JEU/Build/JEU.data",
+    frameworkUrl: "./JEU/Build/JEU.framework.js",
+    codeUrl: "./JEU/Build/JEU.wasm",
   });
 
   function handleEnterFullscreen() {
     requestFullscreen(true);
   }
 
+  const isMobileDevice = () => {
+    return (
+        typeof window.orientation !== "undefined" ||
+        navigator.userAgent.indexOf("IEMobile") !== -1 ||
+        /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)
+    );
+  };
 
   const [devicePixelRatio] = useState(window.devicePixelRatio);
   const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const isMobile = isMobileDevice();
 
   const FullscreenButton = styled.button`
     background-color: rgba(255, 0, 0, 0.89);
@@ -87,6 +96,13 @@ function Game() {
     align-items: center;
   `;
 
+  const StyledMessage = styled.p`
+    font-family: Pixel;
+    font-weight: bold;
+    font-size: 20px;
+    text-align: center;
+  `;
+
   useEffect(() => {
     const updateWindowDimensions = () => {
       setWindowWidth(window.innerWidth);
@@ -104,42 +120,56 @@ function Game() {
 
   return (
     <>
-      <PaperBorder indice={1} />
-      <Helmet>
-          <title>GAME</title>
-          <link rel="icon" href="./assets/icon.png" />
-      </Helmet>
-      <Navbar />
-        <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-          <div style={{ position: "relative" }}>
-            <StyledWarning>
-              <WarningMessage>*if not working, refresh the page </WarningMessage>
-            </StyledWarning>
-            {isLoaded === false && (
-              <StyledLoading>
-                <img src="./assets/typo/LOADING.gif" alt="loading" />
-              </StyledLoading>
+    {isMobile ? (
+              <>
+                <Navbar />
+                <PaperBorder indice={1} />
+                <div style={{ display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", height: "80vh" }}>
+                  <StyledMessage>We're sorry, but our game is not currently available on mobile devices. </StyledMessage>
+                  <Gif />
+                  <StyledMessage>We recommend using a desktop or laptop computer to experience the game. Thank you for your understanding!</StyledMessage>
+                </div>
+              </>
+            ) : (
+              <>
+              <PaperBorder indice={1} />
+              <Helmet>
+                  <title>GAME</title>
+                  <link rel="icon" href="./assets/icon.png" />
+              </Helmet>
+              <Navbar />
+                <div style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                  <div style={{ position: "relative" }}>
+                    <StyledWarning>
+                      <WarningMessage>*if not working, refresh the page </WarningMessage>
+                    </StyledWarning>
+                    {isLoaded === false && (
+                      <StyledLoading>
+                        <img src="./assets/typo/LOADING.gif" alt="loading" />
+                      </StyledLoading>
+                    )}
+                    <Unity
+                      unityProvider={unityProvider}
+                      style={{
+                        display: gameDisplayStyle,
+                        width: px2vw(900),
+                        borderRadius: "12px",
+                        zIndex: gameZIndex,
+                      }}
+                      devicePixelRatio={devicePixelRatio}
+                    />
+                    <FullscreenDiv>
+                      <FullscreenButton onClick={handleEnterFullscreen} ><StyledSvg src="./assets/typo/FULLSCREEN.svg"></StyledSvg></FullscreenButton>
+                    </FullscreenDiv>
+                  </div>
+                  {windowWidth < 1000 && (
+                    <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "60vh" }}>
+                      <FullscreenButton onClick={handleEnterFullscreen}>Press to Play</FullscreenButton>
+                    </div>
+                  )}  
+                </div>
+              </>
             )}
-            <Unity
-              unityProvider={unityProvider}
-              style={{
-                display: gameDisplayStyle,
-                width: px2vw(900),
-                borderRadius: "12px",
-                zIndex: gameZIndex,
-              }}
-              devicePixelRatio={devicePixelRatio}
-            />
-            <FullscreenDiv>
-              <FullscreenButton onClick={handleEnterFullscreen} ><StyledSvg src="./assets/typo/FULLSCREEN.svg"></StyledSvg></FullscreenButton>
-            </FullscreenDiv>
-          </div>
-          {windowWidth < 1000 && (
-            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", height: "80vh" }}>
-              <FullscreenButton onClick={handleEnterFullscreen}>Press to Play</FullscreenButton>
-            </div>
-          )}
-        </div>
     </>
   );
 }

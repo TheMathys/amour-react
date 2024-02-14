@@ -16,7 +16,7 @@ const NavBarWrapper = styled.nav`
     z-index: 7;
     top: 0;
     left: 0;
-    width: 100vw;
+    width: 100%;
     margin-bottom: 20px;
     justify-content: space-between;
 
@@ -112,9 +112,10 @@ const NavBarComputer = styled.div
 `;
 
 const Menu = styled.div`
+    z-index: 1000;
     flex-direction: column;
     display: flex;
-    position: absolute;
+    position: fixed;
     justify-content: space-around;
     top: 0px;
     left: 0;
@@ -122,7 +123,6 @@ const Menu = styled.div`
     width: 100vw;
     background-color: black;
     padding: 10px;
-    z-index: 1;
     align-items: center;
     transition: 0.3s;
     @media(min-width: 800px) {

@@ -2,6 +2,7 @@ import Navbar from "../components/Navbar";
 import styled from "styled-components";
 import px2vw from "../utils/px2vw.js";
 import { Helmet } from 'react-helmet';
+import PaperBorder from "../components/PaperBorder.js";
 
 const StyledContactPage = styled.div`
     display: flex;
@@ -164,7 +165,7 @@ const StyledFaitAvec = styled.div`
 
 const StyledBackground = styled.img`
     position: fixed;
-    width: 800px;
+    width: 600px;
     right: 0;
     bottom: 0;
     z-index: 0;
@@ -179,22 +180,22 @@ const Contact = () => {
                 <link rel="icon" href="./assets/icon.png" />
             </Helmet>
             <Navbar />
-                <StyledBackground src="./assets/typo/3COUPE.png" alt="background" />
+            <StyledBackground src="./assets/typo/3COUPE.png" alt="background" />
                 <div style={{"z-index": "1"}}>
                     <StyledAmour src="./assets/typo/amour.png" alt="amour" />
                 </div>
                 <div style={{ "display": "flex", "flexDirection": "column", "alignItems": "center", "z-index": "1"}}>
                     <StyledMailLogo src="./assets/typo/contact/mail.png" alt="amour" />
-                    <StyledMail>amourgangprod@gmail.com</StyledMail>
+                    <StyledMail>amourprodsav@gmail.com</StyledMail>
                 </div>
                 <div style= {{ "display": "flex", "flexDirection": "row", "alignItems": "center", "justifyContent": "space-between", "z-index": "1"}}>
-                    <a href="https://www.instagram.com/amourprod/">
+                    <a href="https://www.instagram.com/amourprod/" target="_blank" rel="noreferrer">
                         <StyledInsta src="./assets/typo/contact/insta.png" alt="insta" />
                     </a>
-                    <a href="https://www.twitter.com">
+                    <a href="https://www.youtube.com/watch?v=Fj4N0KG5ONs&ab_channel=KimJongBomb" target="_blank" rel="noreferrer">
                         <StyledTwitter src="./assets/typo/contact/twitter.png" alt="twitter" />
                     </a>
-                    <a href="https://www.youtube.com/@amourprod/">
+                    <a href="https://www.youtube.com/@amourprod/" target="_blank" rel="noreferrer">
                         <StyledYTB src="./assets/typo/contact/ytb.png" alt="ytb" />
                     </a>
                 </div> 

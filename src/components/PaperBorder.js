@@ -3,6 +3,7 @@ import styled from 'styled-components';
 
 const StyledBorder = styled.div`
     z-index: -1;
+    pointer-events: none;
     position: fixed;
     width: 100vw;
     bottom: 0;

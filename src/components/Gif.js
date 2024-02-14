@@ -14,7 +14,7 @@ const Gif = (props) => {
     // Afficher le premier GIF pendant 3 secondes
     const timeoutId = setTimeout(() => {
       changeGif();
-    }, 1000);
+    }, 2000);
 
     // Nettoyer le timeout lors du démontage du composant
     return () => clearTimeout(timeoutId);
